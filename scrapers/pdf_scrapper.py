@@ -3,7 +3,7 @@ from pathlib import Path
 import time
 import requests
 import re
-from scrapers.paths import kenya_pdfs, ksh_file
+from paths import kenya_pdfs, ksh_file
 kenya_pdfs.mkdir(parents=True, exist_ok=True)
 
 
