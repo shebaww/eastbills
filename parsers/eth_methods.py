@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import os
 import csv
 import sys; from pathlib import Path
-from parsers.paths import data
+from paths import data
 
 class EthiopianParserMethods:
     def __init__(self):
@@ -124,6 +124,22 @@ class EthiopianParserMethods:
                     .str.strip(),
                   errors="coerce",
               )
+             df["Amount Offered (Millions)"] = pd.to_numeric(
+                  df["Amount Offered (Millions)"]
+                    .astype(str)
+                    .str.replace(",", "", regex=False)
+                    .str.strip(),
+                  errors="coerce",
+              )
+
+             df["Bids Received (Millions)"] = pd.to_numeric(
+                  df["Bids Received (Millions)"]
+                    .astype(str)
+                    .str.replace(",", "", regex=False)
+                    .str.strip(),
+                  errors="coerce",
+              )
+
              df_cleaned_table.append(df)
 
            return df_cleaned_table
